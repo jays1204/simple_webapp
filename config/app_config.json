@@ -1,0 +1,12 @@
+{
+  "development": {
+    "sessionInfo": {
+      "expireTime": 604800
+    }
+  },
+  "test": {
+    "sessionInfo": {
+      "expireTime": 604800
+    }
+  }
+}

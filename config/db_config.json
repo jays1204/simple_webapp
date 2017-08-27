@@ -1,0 +1,16 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "labs",
+    "host": "127.0.0.1",
+    "dialect": "sqlite",
+    "storage": "./localDb/temp.sqlite"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "labs",
+    "dialect": "sqlite"
+  }
+}

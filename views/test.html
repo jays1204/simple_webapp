@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test page</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+  <div> <!-- 회원 가입 -->
+    <p> 회원가입 </p>
+    <form action="/api/v1/users" method="post">
+        username: <input type="text" name="user_id" value="abcd" />
+        nickname: <input type="text" name="nickname" value="abcdnick" />
+        password: <input type="password" name="password" value="1234" />
+        <input type="submit" value="Join" />
+    </form>
+  </div>
+
+<!-- 로그인-->
+<div>
+  내 세션 : <%= JSON.stringify(user) %>
+</div>
+<div>
+  <p> 로그인 </p>
+  <form action="/api/v1/auth/login" method="post">
+    username: <input type="text" name="user_id" value="abcd" />
+    password: <input type="password" name="password" value="1234" />
+    <input type="submit" value="Login" />
+  </form>
+</div>
+
+<div>
+  <p> 탈퇴 </p>
+  <button id="dereg">탈퇴</button>
+</div>
+
+<div>
+</div>
+
+
+<div>
+  <p>글쓰기</p>
+  <form action="/api/v1/posts" method="post">
+    title: <input type="text" name="title" value="제목입니다."  />
+    title: <textarea type="text" name="content" value="내용"> </textarea>
+    <input type="submit" value="Regist" />
+  </form>
+</div>
+
+<div>
+  <p>목록</p>
+  
+  <div>
+    <ul>
+      <% for(var i=0; i < list.length; i++) {%>
+         <li><%= JSON.stringify(list[i]) %></li>
+         <% } %>
+    </ul>
+  </div>
+</div>
+
+<script>
+    $("#dereg").click(function() {
+       $.ajax({
+         type: "DELETE",
+         url: "/api/v1/users/me",
+         dataType: "text",
+         success: function(data) {
+           alert("탈퇴 성공");
+           location.reload();
+         },
+         error: function(data) {
+           alert("탈퇴 실패");
+         }
+       })
+    });
+</script>
+</body>
+</html>
